@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <title>Prueba</title>
+</head>
+
+<body>
+    <h1>Calculo de Prestaciones</h1>
+    <fieldset>
+        <legend>codigo</legend>
+        <div>
+            <label>nombre:</label> <input type="text" name="nombre" id="nombre">
+            <label>monto:</label> <input type="number" name="monto" id="monto">
+            <br>
+            <label>fecha de entrada:</label><input type="date" name="fecha" id="fecha1">
+            <br>
+            <label>fecha de salida:</label><input type="date" name="fecha" id="fecha2">
+            <br>
+            <p><strong>Nota:</strong> marca la casilla corespondiente si no resiviste preaviso o vacaciones</p>
+            <label> Usted fue preavisado?</label> <input type="checkbox" name="preaviso" id="preaviso">
+            <label>cesantia</label> <input type="checkbox" name="cesantia" id="cesantia">
+            <label>Resivio sus vacaciones este ultimo año?</label> <input type="checkbox" name="vacaciones" id="vacaciones">
+            <br>
+            <input type="button" value="Ejecutar" id="btn" onclick="obtenerDatos()">
+            <br>
+        </div>
+
+
+        <div>
+
+            <label>cantidad por preaviso: RD$ <label id="canPrea"></label></label>
+            <p></p>
+            <label>cantidad cesantia antes de 1992 : RD$ <label id="canCesanAnt"></label></label>
+            <p></p>
+            <label>cantidad por cesantia: RD$ <label id="canCesan"></label></label>
+            <p></p>
+            <label>cantidad por vacaciones: RD$ <label id="canVacac"></label></label>
+            <p></p>
+
+
+
+
+
+        </div>
+        <p id="resp"></p>
+    </fieldset>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
