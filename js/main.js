@@ -70,6 +70,7 @@ function preavisoCrear(resp, monto, tiempo) {
             cantidad = (monto / 23.83) * 14;
         } else if (anios >= 1.0) {
             cantidad = (monto / 23.83) * 28;
+            document.getElementById('preaDias').innerHTML = 28;
         }
     }
 
