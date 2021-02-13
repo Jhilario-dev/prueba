@@ -8,6 +8,12 @@ function obtenerDatos() {
     var fecha3 = new Date(fechaIni).getTime();
     var fecha4 = new Date(fechaFinal).getTime();
 
+    var fecha5 = new Date(fechaIni).getMonth() + 1;
+    var fecha6 = new Date(fechaFinal).getMonth() + 1;
+
+    var fecha7 = new Date(fechaIni).getDate() + 1;
+    var fecha8 = new Date(fechaFinal).getDate() + 1;
+
     var monto = document.getElementById('monto').value;
     var preaviso = document.getElementById('preaviso'),
         cesantia = document.getElementById('cesantia'),
@@ -17,7 +23,19 @@ function obtenerDatos() {
     var diff2 = ((fecha4 - fecha3) / (1000 * 60 * 60 * 24)) / 365;
     var diff3 = diff2 - diff;
 
-    console.log(diff2);
+    if (fecha7 == 32) {
+        fecha7 = 1;
+        fecha5 = 1;
+    }
+
+    if (fecha8 == 32) {
+        fecha8 = 1;
+        fecha6 = 1;
+    }
+
+    console.log(fecha5, fecha6);
+    console.log(fecha7, fecha8);
+    console.log(fechaIni, fechaFinal);
 
     if (diff >= 0) {
 
@@ -66,11 +84,13 @@ function preavisoCrear(resp, monto, tiempo) {
 
         if (anios >= 0.3 && anios <= 0.6) {
             cantidad = (monto / 23.83) * 7;
+            document.getElementById('preaDias').innerHTML = '(' + 7 + ' Días)';
         } else if (anios >= 0.6 && anios <= 1.0) {
             cantidad = (monto / 23.83) * 14;
+            document.getElementById('preaDias').innerHTML = '(' + 14 + ' Días)';
         } else if (anios >= 1.0) {
             cantidad = (monto / 23.83) * 28;
-            document.getElementById('preaDias').innerHTML = 28;
+            document.getElementById('preaDias').innerHTML = '(' + 28 + ' Días)';
         }
     }
 
@@ -86,12 +106,16 @@ function cesantiaCrear(resp, monto, tiempo) {
 
         if (anios >= 0.3 && anios <= 0.6) {
             cantidad = (monto / 23.83) * 6;
+            document.getElementById('cesanDias').innerHTML = '(' + 6 + ' Días)';
         } else if (anios >= 0.6 && anios <= 1.0) {
-            cantidad = (monto / 23.83) * (13 * anios);
+            cantidad = (monto / 23.83) * 13;
+            document.getElementById('cesanDias').innerHTML = '(' + 13 + ' Días)';
         } else if (anios >= 1.0 && anios <= 5.0) {
             cantidad = (monto / 23.83) * (21 * anios);
+            document.getElementById('cesanDias').innerHTML = '(' + Math.round(21 * anios) + ' Días)';
         } else if (anios >= 5) {
             cantidad = (monto / 23.83) * (23 * anios);
+            document.getElementById('cesanDias').innerHTML = '(' + Math.round(23 * anios) + ' Días)';
         }
     }
     return cantidad;
@@ -107,8 +131,13 @@ function vacacionesCrear(resp, monto, tiempo) {
 
         if (anio >= 1 && anio <= 5) {
             cantidad = (monto / 23.83) * 14;
+            document.getElementById('vacacDias').innerHTML = '(' + 14 + ' Días)';
+
+
         } else if (anio >= 5) {
             cantidad = (monto / 23.83) * 18;
+            document.getElementById('vacacDias').innerHTML = '(' + 18 + ' Días)';
+
         }
 
     }
@@ -123,9 +152,13 @@ function cesanAnt(resp, monto, tiempo) {
     if (resp == true) {
 
         if (anios >= 0.1 && anios <= 2) {
-            cantidad = (monto / 23.83) * 30;
+            cantidad = (monto / 23.83) * 15;
+            document.getElementById('cecanAntDias').innerHTML = '(' + 15 + ' Días)';
+
         } else if (anios >= 3) {
-            cantidad = (monto / 23.83) * (30 + (15 * (anios - 2)));
+            cantidad = (monto / 23.83) * (15 + (15 * (anios)));
+            document.getElementById('cecanAntDias').innerHTML = '(' + Math.round(15 + (15 * (anios))) + ' Días)';
+
         }
     }
     return cantidad;
